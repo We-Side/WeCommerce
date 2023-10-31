@@ -1,10 +1,24 @@
 package WeSide.Commerce.account.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "ACCOUNTS")
 public class Account {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
+    @Column(unique = true, nullable = false)
     private String username;
     private String role;
     private String phone;
@@ -20,11 +34,8 @@ public class Account {
         this.address = address;
     }
 
-    public Long getId() {
-        return id;
+    protected Account() {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
