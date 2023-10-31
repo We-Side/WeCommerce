@@ -1,4 +1,4 @@
-package WeSide.Commerce.account.application;
+package WeSide.Commerce.account.application.command;
 
 import WeSide.Commerce.account.domain.Account;
 import WeSide.Commerce.account.domain.AccountRepository;

@@ -1,9 +1,9 @@
-package WeSide.Commerce.account;
+package WeSide.Commerce.account.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import WeSide.Commerce.account.application.RegisterAccount;
+import WeSide.Commerce.account.application.command.RegisterAccount;
 import WeSide.Commerce.account.domain.Account;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,7 @@
 package WeSide.Commerce.account.presentation;
 
-import WeSide.Commerce.account.application.RegisterAccount;
+import WeSide.Commerce.account.application.AccountFacade;
+import WeSide.Commerce.account.application.command.RegisterAccountCommand;
 import WeSide.Commerce.account.presentation.request.RegisterAccountRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,17 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/accounts")
 public class AccountController {
 
-    private final RegisterAccount registerAccount;
+    private final AccountFacade accountFacade;
 
-    public AccountController(RegisterAccount registerAccount) {
-        this.registerAccount = registerAccount;
+    public AccountController(AccountFacade accountFacade) {
+        this.accountFacade = accountFacade;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void registerAccount(@Valid @RequestBody RegisterAccountRequest request) {
-        registerAccount.register(request.email(), request.password(), request.username(),
-                request.role(), request.phone(), request.address());
+
+        accountFacade.registerAccount(
+                new RegisterAccountCommand(request.email(), request.password(), request.username(),
+                        request.role(), request.phone(), request.address()));
     }
 
 }

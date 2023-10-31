@@ -1,4 +1,4 @@
-package WeSide.Commerce.account;
+package WeSide.Commerce.account.application;
 
 import WeSide.Commerce.account.domain.Account;
 import WeSide.Commerce.account.domain.AccountRepository;
@@ -29,7 +29,7 @@ public class FakeAccountRepository implements AccountRepository {
                 .stream()
                 .anyMatch(account -> account.getUsername().equals(username));
     }
-    
+
     public List<Account> findAll() {
         return accounts.values().stream().toList();
     }
