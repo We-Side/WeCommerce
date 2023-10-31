@@ -19,6 +19,13 @@ public class RegisterAccount {
             String phone, String address) {
         Account account = new Account(email, password, username, role, phone, address);
 
+        if (accountRepository.existsByEmail(email)) {
+            throw new RuntimeException("Duplicate Email");
+        }
+        if (accountRepository.existsByUsername(username)) {
+            throw new RuntimeException("Duplicate Username");
+        }
+
         accountRepository.save(account);
     }
 }

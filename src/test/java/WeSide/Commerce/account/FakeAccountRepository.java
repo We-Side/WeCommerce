@@ -16,6 +16,20 @@ public class FakeAccountRepository implements AccountRepository {
         accounts.put(sequence.getAndIncrement(), account);
     }
 
+    @Override
+    public boolean existsByEmail(String email) {
+        return accounts.values()
+                .stream()
+                .anyMatch(account -> account.getEmail().equals(email));
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return accounts.values()
+                .stream()
+                .anyMatch(account -> account.getUsername().equals(username));
+    }
+    
     public List<Account> findAll() {
         return accounts.values().stream().toList();
     }

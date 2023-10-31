@@ -18,4 +18,14 @@ public class AccountRepositoryAdapter implements AccountRepository {
     public void save(Account account) {
         jpaAccountRepository.save(account);
     }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return jpaAccountRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return jpaAccountRepository.existsByUsername(username);
+    }
 }
